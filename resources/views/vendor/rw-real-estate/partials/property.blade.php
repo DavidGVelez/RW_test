@@ -1,11 +1,11 @@
 <div class="c-properties-grid__item">
-    <h3 class="c-properties-grid-item__title">Title {!! $i !!}</h3>
-    <p>Description...</p>
+    <h3 class="c-properties-grid-item__title">{{$property->name}}</h3>
+    <p>{{$property->description}}</p>
     <ul class="c-properties-grid-item__list">
-        <li>Price: xxxx €</li>
-        <li>Location: xxxxxx</li>
-        <li>Rooms: xxxxxx</li>
-        <li>Bathrooms: xxxxxx</li>
-        <li>Built Area: xxxxxx m2</li>
+        <li>Price: {{$property->features->price}} €</li>
+        <li>Location: {{$property->location}}</li>
+        <li>Rooms: {{$property->features->bedrooms}}</li>
+        <li>Bathrooms: {{$property->features->bathrooms}}</li>
+        <li>Built Area: {{$property->features->built_area}} m2</li>
     </ul>
 </div>

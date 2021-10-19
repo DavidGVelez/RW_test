@@ -8,7 +8,8 @@ class RWProperty extends Property
 {
 
     public $appends = [
-        'property_type'
+        'property_type',
+        'location'
     ];
 
     public function features()
@@ -19,5 +20,10 @@ class RWProperty extends Property
     public function getPropertyTypeAttribute()
     {
         return $this->hasOne(RWPropertyType::class, 'id', 'properties_type_id')->first()->type;
+    }
+
+    public function getLocationAttribute()
+    {
+        return $this->hasOne(RWLocation::class, 'id', 'location_id')->first()->name;
     }
 }

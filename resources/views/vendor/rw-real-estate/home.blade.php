@@ -9,9 +9,9 @@
 
         <section class="c-properties-grid__wrapper">
             <div class="c-properties-grid">
-                @for($i=1; $i<=10; $i++)
+                @foreach($properties as $property)
                     @include('vendor.rw-real-estate.partials.property')
-                @endfor
+                @endforeach
             </div>
         </section>
 

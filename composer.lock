@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "94d4bf9ac7f4a933030e46a346ee2917",
+    "content-hash": "d37b05bb0526204eb2a2a23ffc12d415",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1681,6 +1681,67 @@
                 }
             ],
             "time": "2021-09-25T23:07:42+00:00"
+        },
+        {
+            "name": "refineriaweb-public/level-test-php-senior-real-estate",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://gitlab.com/refineriaweb-public/level-test/level-test-php-senior-real-estate.git",
+                "reference": "7d9466c7d605cd4868d1f21793c3add9340d36e3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://gitlab.com/api/v4/projects/refineriaweb-public%2Flevel-test%2Flevel-test-php-senior-real-estate/repository/archive.zip?sha=7d9466c7d605cd4868d1f21793c3add9340d36e3",
+                "reference": "7d9466c7d605cd4868d1f21793c3add9340d36e3",
+                "shasum": ""
+            },
+            "require-dev": {
+                "orchestra/testbench": "^3.4",
+                "vlucas/phpdotenv": "^2.4"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "RefineriaWeb\\RWRealEstate\\RWRealEstateServiceProvider"
+                    ],
+                    "aliases": []
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "RefineriaWeb\\RWRealEstate\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "RefineriaWeb\\RWRealEstate\\Tests\\": "tests/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Raúl Sánchez",
+                    "email": "rsanchez@refineriaweb.com"
+                }
+            ],
+            "description": "RW Senior PHP Level Test",
+            "keywords": [
+                "laravel",
+                "level",
+                "php",
+                "rw",
+                "senior",
+                "test"
+            ],
+            "time": "2021-04-21T10:33:20+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

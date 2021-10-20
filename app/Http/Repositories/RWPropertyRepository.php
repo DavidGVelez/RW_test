@@ -24,9 +24,11 @@ class RWPropertyRepository extends BaseRepository
         if (isset($data->price_to)) {
           $filter->where('price', '<=', $data->price_to);
         }
+        //This could be <= depending on if you want exact rooms or from n rooms
         if (isset($data->rooms)) {
           $filter->where('bedrooms', '=', $data->rooms);
         }
+        //This could be <= depending on if you want exact bathrooms or from n bathrooms
         if (isset($data->bathrooms)) {
           $filter->where('bathrooms', '=', $data->bathrooms);
         }
@@ -55,9 +57,8 @@ class RWPropertyRepository extends BaseRepository
       ->join('locations', 'properties.location_id', '=', 'locations.id')
       ->join('properties_types', 'properties.properties_type_id', '=', 'properties_types.id')
       ->join('properties_features', 'properties.id', '=', 'properties_features.property_id')
-      ->offset($data->limit * $data->offset)
-      ->limit($data->limit)
-      ->get();
+      ->paginate($data['limit']);
+
 
     return $query;
   }

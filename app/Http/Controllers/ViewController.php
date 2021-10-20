@@ -6,7 +6,7 @@ use App\Http\Repositories\RWLocationRepository;
 use App\Models\RWProperty;
 use App\Http\Repositories\RWPropertyRepository;
 use App\Models\RWLocation;
-use Illuminate\Http\Request;
+
 
 class ViewController extends Controller
 {
@@ -33,8 +33,7 @@ class ViewController extends Controller
   public function properties()
   {
     $locations = $this->locations->get_all_order_by_field('name');
-    $properties = $this->properties->all()->take(20);
-
+    $properties = $this->properties->getPaginatedResults(20);
     return view('vendor.rw-real-estate.properties', compact('locations', 'properties'));
   }
 }

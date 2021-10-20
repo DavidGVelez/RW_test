@@ -18,6 +18,12 @@ class BaseRepository implements RepositoryInterface
     return $this->model->all();
   }
 
+  public function get_all_order_by_field($field, $order = 'ASC')
+  {
+    return $this->model->orderBy($field, $order)->get();
+  }
+
+
   public function create(array $data)
   {
     return $this->model->create($data);

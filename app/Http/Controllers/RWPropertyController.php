@@ -16,14 +16,8 @@ class RWPropertyController extends Controller
         $this->repository = new RWPropertyRepository($property);
     }
 
-
-    public function index()
+    public function apply_filters(Request $request)
     {
-
-        $quantity = 10;
-
-        $properties = $this->repository->get_random_properties($quantity);
-
-        return view('vendor.rw-real-estate.home', compact('properties'));
+        return $this->repository->get_filtered_data($request);
     }
 }

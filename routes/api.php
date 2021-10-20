@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -15,4 +13,9 @@ use Illuminate\Http\Request;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+// This should have a middlware auth:api with token, login... or any type of security.
+Route::group(['middleware' => 'web'], function () {
+    Route::get('/properties', 'RWPropertyController@apply_filters');
 });

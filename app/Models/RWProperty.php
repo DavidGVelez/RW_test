@@ -26,4 +26,9 @@ class RWProperty extends Property
     {
         return $this->hasOne(RWLocation::class, 'id', 'location_id')->first()->name;
     }
+
+    public function agent()
+    {
+        return $this->hasOne(RWAgent::class, 'id', 'agent_id')->first();
+    }
 }

@@ -20,7 +20,7 @@ class BaseRepository implements RepositoryInterface
 
   public function getPaginatedResults($qty)
   {
-    return $this->model->paginate($qty);
+    return $this->model->join('properties_features', 'properties.id', '=', 'properties_features.property_id')->orderBy('price', 'desc')->paginate($qty);
   }
 
   public function get_all_order_by_field($field, $order = 'ASC')

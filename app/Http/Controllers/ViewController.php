@@ -7,7 +7,6 @@ use App\Models\RWProperty;
 use App\Http\Repositories\RWPropertyRepository;
 use App\Models\RWLocation;
 
-
 class ViewController extends Controller
 {
 

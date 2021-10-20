@@ -16,6 +16,11 @@ class RWPropertyController extends Controller
         $this->repository = new RWPropertyRepository($property);
     }
 
+    public function show(RWProperty $property)
+    {
+        return view('property', compact('property'));
+    }
+
     public function apply_filters(Request $request)
     {
         return $this->repository->get_filtered_data($request);

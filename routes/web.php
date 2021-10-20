@@ -18,3 +18,5 @@ Route::get('/', function () {
 Route::get('/home-test-view', 'ViewController@home');
 
 Route::get('/properties-test-view', 'ViewController@properties');
+
+Route::get('/property/{property}', 'RWPropertyController@show');

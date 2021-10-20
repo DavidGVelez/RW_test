@@ -57,6 +57,7 @@ class RWPropertyRepository extends BaseRepository
       ->join('locations', 'properties.location_id', '=', 'locations.id')
       ->join('properties_types', 'properties.properties_type_id', '=', 'properties_types.id')
       ->join('properties_features', 'properties.id', '=', 'properties_features.property_id')
+      ->orderBy('price', 'desc')
       ->paginate($data['limit']);
 
 

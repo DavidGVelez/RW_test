@@ -15,8 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home-test-view', 'RWPropertyController@index');
+Route::get('/home-test-view', 'ViewController@home');
 
-Route::get('/properties-test-view', function () {
-    return view('vendor.rw-real-estate.properties');
-});
+Route::get('/properties-test-view', 'ViewController@properties');

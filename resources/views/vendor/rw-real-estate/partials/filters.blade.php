@@ -40,28 +40,30 @@
     <label for="location">
         Location:
         <select name="location" id="location">
-            <option value="">TODO</option>
+            @foreach ($locations as $location)
+                <option value="{{$location->id}}">{{$location->name}}</option>
+            @endforeach
         </select>
     </label>
     <br>
     <label for="garaje">
         Garaje:
-        <input type="checkbox" name="garaje" id="garaje">
+        <input type="checkbox" name="garaje" id="garaje" value="1">
     </label>
     <br>
     <label for="garden">
         Garden:
-        <input type="checkbox" name="garden" id="garden">
+        <input type="checkbox" name="garden" id="garden" value="1">
     </label>
     <br>
     <label for="private_pool">
         Private pool:
-        <input type="checkbox" name="private_pool" id="private_pool">
+        <input type="checkbox" name="private_pool" id="private_pool" value="1">
     </label>
     <br>
     <label for="community_pool">
         Community pool:
-        <input type="checkbox" name="community_pool" id="community_pool">
+        <input type="checkbox" name="community_pool" id="community_pool" value="1">
     </label>
     <br>
     <label for="reference">

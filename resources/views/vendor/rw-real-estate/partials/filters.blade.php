@@ -1,4 +1,4 @@
-<section class="c-filters">
+<form class="c-filters">
     <h2 class="c-filters__title">Filters:</h2>
     <label for="price_from">
         Price from: <input type="number" name="price_from" id="price_from" />
@@ -71,8 +71,8 @@
         <input type="text" name="reference" id="reference">
     </label>
     <br>
-    <input type="button" value="Filter">
-</section>
+    <input type="button" value="Filter" id="filter">
+</form>
 
 @push('css')
     <style>
@@ -88,6 +88,51 @@
 
 @push('js')
     <script>
+        $('#filter').on('click', function(e){
+            e.preventDefault();
 
+            var data = {};
+            $.each($('form').serializeArray(), function(){
+                data[this.name] = this.value
+            });
+            console.log(data);
+            $.ajax({
+                url: '/api/properties',
+                data: {
+                    ...data,
+                    offset: 0,
+                    limit: 20
+                }
+            }).done(function(res) {
+                $('#properties_grid').empty();
+                if(res.length == 0){
+                    $('#properties_grid').append(
+                        '<span>No properties with the defined filters</span>'
+                    );
+                }
+                res.forEach(element => {
+                    $('#properties_grid').append(
+                        printData(element)
+                    );
+                });
+            })
+
+        })
+
+        function printData(property){
+           
+            return `
+            <div class="c-properties-grid__item">
+                <h3 class="c-properties-grid-item__title">${property.name}</h3>
+                <p>${property.description}}</p>
+                <ul class="c-properties-grid-item__list">
+                    <li>Price: ${property.price} €</li>
+                    <li>Location: ${property.location}</li>
+                    <li>Rooms: ${property.bedrooms}</li>
+                    <li>Bathrooms: ${property.bathrooms}</li>
+                    <li>Built Area: ${property.built_area} m2</li>
+                </ul>
+            </div>`     
+        }
     </script>
 @endpush

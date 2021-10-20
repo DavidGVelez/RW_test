@@ -12,51 +12,51 @@ class RWPropertyRepository extends BaseRepository
     return $this->model->get()->random($quantity);
   }
 
-  public function get_filtered_data($filters, $offset = 0, $limit = 20)
+  public function get_filtered_data($data)
   {
 
     $query = DB::table('properties')
       ->select('*', 'properties.name as name', 'locations.name as location')
-      ->where(function ($filter) use ($filters) {
-        if (isset($filters->price_from)) {
-          $filter->where('price', '>=', $filters->price_from);
+      ->where(function ($filter) use ($data) {
+        if (isset($data->price_from)) {
+          $filter->where('price', '>=', $data->price_from);
         }
-        if (isset($filters->price_to)) {
-          $filter->where('price', '<=', $filters->price_to);
+        if (isset($data->price_to)) {
+          $filter->where('price', '<=', $data->price_to);
         }
-        if (isset($filters->rooms)) {
-          $filter->where('rooms', '=', $filters->rooms);
+        if (isset($data->rooms)) {
+          $filter->where('bedrooms', '=', $data->rooms);
         }
-        if (isset($filters->bathrooms)) {
-          $filter->where('bathrooms', '=', $filters->bathrooms);
+        if (isset($data->bathrooms)) {
+          $filter->where('bathrooms', '=', $data->bathrooms);
         }
-        if (isset($filters->property_type)) {
-          $filter->where('type', '=', $filters->property_type);
+        if (isset($data->property_type)) {
+          $filter->where('properties_type_id', '=', $data->property_type);
         }
-        if (isset($filters->location)) {
-          $filter->where('name', '=', $filters->location,);
+        if (isset($data->location)) {
+          $filter->where('location_id', '=', $data->location);
         }
-        if (isset($filters->garaje)) {
-          $filter->where('garaje', '=', $filters->garaje);
+        if (isset($data->garaje)) {
+          $filter->where('garaje', '=', 1);
         }
-        if (isset($filters->garden)) {
-          $filter->where('garden', '=', $filters->garden);
+        if (isset($data->garden)) {
+          $filter->where('garden', '=', 1);
         }
-        if (isset($filters->private_pool)) {
-          $filter->where('private_pool', '=', $filters->private_pool);
+        if (isset($data->private_pool)) {
+          $filter->where('private_pool', '=', 1);
         }
-        if (isset($filters->community_pool)) {
-          $filter->where('community_pool', '=', $filters->community_pool);
+        if (isset($data->community_pool)) {
+          $filter->where('community_pool', '=', 1);
         }
-        if (isset($filters->reference)) {
-          $filter->where('reference', 'LIKE', $filters->reference);
+        if (isset($data->reference)) {
+          $filter->where('reference', '=', $data->reference);
         }
       })
       ->join('locations', 'properties.location_id', '=', 'locations.id')
       ->join('properties_types', 'properties.properties_type_id', '=', 'properties_types.id')
       ->join('properties_features', 'properties.id', '=', 'properties_features.property_id')
-      ->offset($limit * $offset)
-      ->limit($limit)
+      ->offset($data->limit * $data->offset)
+      ->limit($data->limit)
       ->get();
 
     return $query;

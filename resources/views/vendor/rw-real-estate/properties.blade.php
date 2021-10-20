@@ -10,10 +10,10 @@
         </aside>
         <aside class="c-grid__right">
             <section class="c-properties-grid__wrapper">
-                <div class="c-properties-grid">
-                    @for($i=1; $i<=50; $i++)
+                <div class="c-properties-grid" id="properties_grid">
+                    @foreach($properties as $property)
                         @include('vendor.rw-real-estate.partials.property')
-                    @endfor
+                    @endforeach
                 </div>
             </section>
         </aside>

@@ -33,6 +33,8 @@ class ViewController extends Controller
   public function properties()
   {
     $locations = $this->locations->get_all_order_by_field('name');
-    return view('vendor.rw-real-estate.properties', compact('locations'));
+    $properties = $this->properties->all()->take(20);
+
+    return view('vendor.rw-real-estate.properties', compact('locations', 'properties'));
   }
 }
